@@ -76,7 +76,7 @@ function AtomicImage({url}) {
         loading={"lazy"}
         src={url}
         onLoad={() => setLoaded(true)}
-        style={{maxWidth: "inherit", height: "80%"}}
+        style={{maxWidth: "inherit", maxHeight: "600px"}}
         alt={""}
       />
       {loaded ? "" :
