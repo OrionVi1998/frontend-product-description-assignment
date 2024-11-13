@@ -70,8 +70,6 @@ function AtomicImage({url}) {
 
   const [loaded, setLoaded] = useState(false)
 
-  console.log(url)
-
   return (
     <>
       <img
