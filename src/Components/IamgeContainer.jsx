@@ -1,19 +1,16 @@
-import {Button, MobileStepper, Paper, useMediaQuery} from "@mui/material";
+import {Box, Button, CircularProgress, MobileStepper, Paper} from "@mui/material";
 import {useState} from "react";
 
 export default function ImageContainer({images}) {
 
   const [activeStep, setActiveStep] = useState(0);
-  const matches = useMediaQuery('(min-width:1000px)')
 
   const maxSteps = images.length;
 
   const builtImages = images.map(i => (
-    <img
-      loading={"lazy"}
-      key={i} src={i}
-      style={{maxWidth: "inherit", height: "80%"}}
-      alt={""}
+    <AtomicImage
+      key={i}
+      url={i}
     />
   ))
 
@@ -33,9 +30,9 @@ export default function ImageContainer({images}) {
         justifyContent: "space-around",
         alignItems: "center",
         maxHeight: "50vh",
-        maxWidth: matches ? "25vw" : "95vw",
+        maxWidth: "95vw",
         minHeight: "inherit",
-        minWidth:"50%"
+        minWidth: "50%"
       }}
     >
       {builtImages[activeStep]}
@@ -56,5 +53,34 @@ export default function ImageContainer({images}) {
         activeStep={activeStep}
       />
     </Paper>
+  )
+}
+
+
+function AtomicImage({url}) {
+
+  const [loaded, setLoaded] = useState(false)
+
+  console.log(url)
+
+  return (
+    <>
+      <img
+        loading={"lazy"}
+        src={url}
+        onLoad={() => setLoaded(true)}
+        style={{maxWidth: "inherit", height: "80%"}}
+        alt={""}
+      />
+      {loaded ? "" :
+        <Box
+          padding={8}
+        >
+          <CircularProgress
+            style={{maxWidth: "inherit", minHeight: "80%"}}
+          />
+        </Box>
+      }
+    </>
   )
 }

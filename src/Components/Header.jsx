@@ -39,7 +39,6 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 }));
 
 export default function Header({breadcrumbs}) {
-  console.log(breadcrumbs)
   return (
     <AppBar position={"sticky"}>
       <Toolbar

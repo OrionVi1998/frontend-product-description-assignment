@@ -26,23 +26,14 @@ export default function ProductPage({product}) {
           {product.cluster.clusterInfoDto.metaTitle}
         </Typography>
       </Paper>
-      <Stack
-        direction={matches ? 'row' : 'column'}
-        sx={{
-          alignItems: 'center',
-          justifyContent: 'space-around',
-          minHeight: matches ? "25vh" : ""
-        }}
-        spacing={2}
-      >
 
-        <ImageContainer
-          images={
-            product.imagesUrls
-          }/>
+      <ImageContainer
+        images={
+          product.imagesUrls
+        }/>
 
-        <ProductPriceBox product={product}></ProductPriceBox>
-      </Stack>
+      <ProductPriceBox product={product}></ProductPriceBox>
+
       <ProductDescription product={product}/>
     </Stack>
   )

@@ -1,13 +1,11 @@
-import {Box, Button, Paper, Rating, Stack, Typography, useMediaQuery} from "@mui/material";
+import {Box, Button, Paper, Rating, Stack, Typography,} from "@mui/material";
 
 export default function ProductPriceBox({product}) {
-  const matches = useMediaQuery('(min-width:1000px)')
 
   return (
     <Paper sx={{
       padding: 2,
-      minHeight: "inherit",
-      minWidth: matches ? "40vw" : "90vw",
+      minWidth: "60vw",
     }}>
         <Stack
           direction={"row"}
