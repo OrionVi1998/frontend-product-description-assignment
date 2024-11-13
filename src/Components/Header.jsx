@@ -50,7 +50,10 @@ export default function Header({breadcrumbs}) {
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          height: matches ? "" : "100px"
+          '@media all': {
+            minHeight: matches ? "" : "auto",
+          },
+          padding:1
         }}
       >
         <Stack
@@ -86,11 +89,14 @@ export default function Header({breadcrumbs}) {
             />
           </Search>
         </Stack>
-        <Box>
-          <Typography>
-            Icon
-          </Typography>
-        </Box>
+        {matches ?
+          <Box>
+            <Typography>
+              Icon
+            </Typography>
+          </Box>
+          : ""}
+
       </Toolbar>
     </AppBar>
   )
