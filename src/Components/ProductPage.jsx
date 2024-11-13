@@ -1,13 +1,10 @@
-import {Paper, Stack, Typography, useMediaQuery} from "@mui/material";
+import {Paper, Stack, Typography} from "@mui/material";
 import ImageContainer from "./IamgeContainer.jsx";
 import ProductPriceBox from "./ProductPriceBox.jsx";
 import ProductDescription from "./ProductDescription.jsx";
 import Header from "./Header.jsx";
 
 export default function ProductPage({product}) {
-
-
-  console.log(product)
 
   return (
     <Stack
