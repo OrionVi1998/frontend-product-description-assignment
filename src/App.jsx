@@ -1,4 +1,3 @@
-import './App.css'
 import ProductPage from "./Components/ProductPage.jsx";
 import productData from './assets/response2.json'
 import {useState} from "react";
