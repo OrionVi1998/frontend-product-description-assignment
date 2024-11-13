@@ -6,7 +6,7 @@ import {
   Paper, Stack,
   styled,
   Toolbar,
-  Typography
+  Typography, useMediaQuery
 } from "@mui/material";
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -39,16 +39,22 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 }));
 
 export default function Header({breadcrumbs}) {
+
+  const matches = useMediaQuery('(min-width:1000px)');
+
   return (
-    <AppBar position={"sticky"}>
+    <AppBar
+      position={"sticky"}
+    >
       <Toolbar
         sx={{
           display: "flex",
-          justifyContent: "space-between"
+          justifyContent: "space-between",
+          height: matches ? "" : "100px"
         }}
       >
         <Stack
-          direction={"row"}
+          direction={matches ? "row" : "column"}
           spacing={1}
         >
           <Paper

@@ -6,7 +6,6 @@ import Header from "./Header.jsx";
 
 export default function ProductPage({product}) {
 
-  const matches = useMediaQuery('(min-width:1000px)');
 
   console.log(product)
 
@@ -17,9 +16,7 @@ export default function ProductPage({product}) {
       justifyContent='center'
       spacing={3}
     >
-      {matches ?
-        <Header breadcrumbs={product.breadcrumbs}/> : ""
-      }
+      <Header breadcrumbs={product.breadcrumbs}/>
 
       <Paper sx={{padding: 2}}>
         <Typography variant={"h5"}>
