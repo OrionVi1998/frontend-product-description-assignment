@@ -41,7 +41,8 @@ export default function ImageContainer({images}) {
         maxHeight: "50vh",
         maxWidth: "95vw",
         minHeight: "inherit",
-        minWidth: "50%"
+        minWidth: "50%",
+        overflow:"hidden"
       }}
     >
       {builtImages[activeStep]}
