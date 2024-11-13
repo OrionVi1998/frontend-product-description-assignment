@@ -15,11 +15,20 @@ export default function ImageContainer({images}) {
   ))
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setActiveStep((prevActiveStep) =>
+      activeStep === maxSteps - 1 ?
+      0
+      :
+      prevActiveStep + 1);
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    setActiveStep((prevActiveStep) =>
+      activeStep === 0 ?
+        maxSteps - 1
+        :
+        prevActiveStep - 1
+    );
   };
 
   return (
@@ -39,12 +48,12 @@ export default function ImageContainer({images}) {
       <MobileStepper
         position={"static"}
         nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+          <Button size="small" onClick={handleNext}>
             {">"}
           </Button>
         }
         backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+          <Button size="small" onClick={handleBack}>
             {"<"}
           </Button>
         }
