@@ -1,16 +1,92 @@
-import {AppBar, Breadcrumbs, Link, Toolbar} from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Breadcrumbs, InputBase,
+  Link,
+  Paper, Stack,
+  styled,
+  Toolbar,
+  Typography
+} from "@mui/material";
 
-export default function Header() {
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import SearchIcon from '@mui/icons-material/Search';
+
+const Search = styled('div')(({theme}) => ({
+  position: 'relative',
+  borderRadius: "8px",
+  backgroundColor: theme.palette.common.white
+}));
+
+const SearchIconWrapper = styled('div')(({theme}) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: theme.palette.common.black
+}));
+
+const StyledInputBase = styled(InputBase)(({theme}) => ({
+  color: theme.palette.common.black,
+  width: '100%',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`
+  },
+}));
+
+export default function Header({breadcrumbs}) {
+  console.log(breadcrumbs)
   return (
-    <AppBar style={{backgroundColor: 'blue'}}>
-      <Toolbar>
-        My header
+    <AppBar position={"sticky"}>
+      <Toolbar
+        sx={{
+          display: "flex",
+          justifyContent: "space-between"
+        }}
+      >
+        <Stack
+          direction={"row"}
+          spacing={1}
+        >
+          <Paper
+            sx={{
+              padding: 1
+            }}
+            elevation={0}
+          >
+            {breadcrumbs ?
+              <Breadcrumbs
+                separator={<NavigateNextIcon fontSize="small"/>}
+              >
+                {breadcrumbs.map(b =>
+                  (<Link key={b.label}>
+                    <Typography>
+                      {b.label}
+                    </Typography>
+                  </Link>))}
+              </Breadcrumbs>
+              : ""}
+          </Paper>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon/>
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{'aria-label': 'search'}}
+            />
+          </Search>
+        </Stack>
+        <Box>
+          <Typography>
+            Icon
+          </Typography>
+        </Box>
       </Toolbar>
-      <Breadcrumbs>
-        <Link>Home</Link>
-        <Link>Products</Link>
-        <Link>Product name</Link>
-      </Breadcrumbs>
     </AppBar>
   )
 }

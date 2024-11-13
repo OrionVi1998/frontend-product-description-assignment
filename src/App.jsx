@@ -1,5 +1,5 @@
 import './App.css'
-import ProductPageDesktop from "./Components/ProductPageDesktop.jsx";
+import ProductPage from "./Components/ProductPage.jsx";
 import productData from './assets/response2.json'
 import {useState} from "react";
 
@@ -9,7 +9,7 @@ function App() {
   )
   return (
     <>
-      <ProductPageDesktop product={product}/>
+      <ProductPage product={product}/>
     </>
   )
 }
